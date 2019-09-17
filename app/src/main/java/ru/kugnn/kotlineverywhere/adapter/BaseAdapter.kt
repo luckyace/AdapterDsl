@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import ru.kugnn.kotlineverywhere.inflate
 
-abstract class BaseAdapter : RecyclerView.Adapter<BaseHolder>() {
+class BaseAdapter : RecyclerView.Adapter<BaseHolder>() {
 
     private val delegates = SparseArray<AdapterDelegate>()
 
