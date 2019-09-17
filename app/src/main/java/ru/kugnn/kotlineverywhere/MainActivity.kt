@@ -8,7 +8,7 @@ import ru.kugnn.kotlineverywhere.adapter.BannerAdapter
 
 class MainActivity : AppCompatActivity() {
 
-    val bannerAdapter = BannerAdapter()
+    private val bannerAdapter = BannerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

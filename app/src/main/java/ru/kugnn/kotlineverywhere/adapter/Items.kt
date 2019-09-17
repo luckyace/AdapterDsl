@@ -2,7 +2,7 @@ package ru.kugnn.kotlineverywhere.adapter
 
 import androidx.annotation.DrawableRes
 
-sealed class Item
+sealed class Item()
 
 class BigBannerItem(@DrawableRes val id: Int) : Item()
 class SmallBannerItem(@DrawableRes val id: Int, val text: String) : Item()
