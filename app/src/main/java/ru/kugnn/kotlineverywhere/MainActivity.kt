@@ -1,30 +1,52 @@
 package ru.kugnn.kotlineverywhere
 
 import android.os.Bundle
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.banner_big.view.*
-import kotlinx.android.synthetic.main.banner_grid.view.*
-import kotlinx.android.synthetic.main.banner_small.view.*
+import kotlinx.android.synthetic.main.banner_big.*
+import kotlinx.android.synthetic.main.banner_grid.*
+import kotlinx.android.synthetic.main.banner_small.*
 import kotlinx.android.synthetic.main.box.view.*
 import ru.kugnn.kotlineverywhere.adapter.*
 
 class MainActivity : AppCompatActivity() {
 
     private val bannerAdapter = adapter {
-        delegate<BigBannerItem>(R.layout.banner_big) { itemView, item ->
-            item.id into itemView.bigBannerImage
+        delegate<BigBannerItem>(R.layout.banner_big) {
+
+            click {
+                Toast.makeText(this@MainActivity, "BIG BANNER CLICKED", LENGTH_SHORT).show()
+            }
+
+            bind {
+                it.id into bigBannerImage
+            }
         }
-        delegate<SmallBannerItem>(R.layout.banner_small) { itemView, item ->
-            item.id into itemView.smallBannerImage
-            itemView.smallBannerLabel.text = item.text
+
+        delegate<SmallBannerItem>(R.layout.banner_small) {
+
+            click {
+                item?.let {
+                    Toast.makeText(this@MainActivity, it.text, LENGTH_SHORT).show()
+                }
+            }
+
+            bind {
+                it.id into smallBannerImage
+                smallBannerLabel.text = it.text
+            }
         }
-        delegate<GridBannerItem>(R.layout.banner_grid) { itemView, item ->
-            item.photo1 into itemView.box1.boxImage
-            item.photo2 into itemView.box2.boxImage
-            item.photo3 into itemView.box3.boxImage
-            item.photo4 into itemView.box4.boxImage
+
+        delegate<GridBannerItem>(R.layout.banner_grid) {
+            bind {
+                it.photo1 into box1.boxImage
+                it.photo2 into box2.boxImage
+                it.photo3 into box3.boxImage
+                it.photo4 into box4.boxImage
+            }
         }
     }
 
