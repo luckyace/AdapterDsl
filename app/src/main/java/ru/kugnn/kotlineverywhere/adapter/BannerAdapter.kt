@@ -6,6 +6,7 @@ import kotlinx.android.synthetic.main.banner_grid.*
 import kotlinx.android.synthetic.main.banner_small.*
 import kotlinx.android.synthetic.main.box.view.*
 import ru.kugnn.kotlineverywhere.R
+import ru.kugnn.kotlineverywhere.into
 
 class BannerAdapter : BaseAdapter() {
     init {
